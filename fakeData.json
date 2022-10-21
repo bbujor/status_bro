@@ -1,0 +1,89 @@
+{
+    "booking": [
+        {
+            "bookingId": "12345",
+            "pickupLocation": "Manchester Airport (MAN)",
+            "dropOffLocation" : "The Grand Hotel",
+            "pickUpTime": "2022-03-08 11:12:09",
+            "status": "DRIVER_LATE"
+        },
+        {
+            "bookingId": "234234",
+            "pickupLocation": "Amsterdam Schiphol Aiport (AMS)",
+            "dropOffLocation" : "CitizenM Hotel",
+            "pickUpTime": "2022-05-12 14:10:09",
+            "status": "DRIVER_NOT_ASSIGNED"
+        },
+        {
+            "bookingId": "654563",
+            "pickupLocation": "Amsterdam Centraal",
+            "dropOffLocation" : "Diemen Zuid",
+            "pickUpTime": "2022-06-22 19:05:09",
+            "status": "DRIVER_ON_THE_WAY"
+        },
+        {
+            "bookingId": "45345435",
+            "pickupLocation": "London Heathrow Airport (LHR)",
+            "dropOffLocation" : "Greggs",
+            "pickUpTime": "2022-12-04 08:10:09",
+            "status": "DRIVER_WRONG_PICKUP_LOCATION"
+        },
+        {
+            "bookingId": "4242345",
+            "pickupLocation": "Liverpool Lime Street",
+            "dropOffLocation" : "Liverpool City Centre",
+            "pickUpTime": "2023-01-04 14:00:09",
+            "status": "DRIVER_WRONG_DROP_OFF_LOCATION"
+        },
+        {
+            "bookingId": "5345353",
+            "pickupLocation": "Sheffield Hallam University",
+            "dropOffLocation" : "Sheffield Train Station",
+            "pickUpTime": "2022-02-17 07:10:09",
+            "status": "DRIVER_WRONG_DROP_OFF_LOCATION"
+        },
+        {
+            "bookingId": "5435554",
+            "pickupLocation": "Barcelona Airport (BCN)",
+            "dropOffLocation" : "Pl. Catalunya",
+            "pickUpTime": "2022-05-27 09:20:09",
+            "status": "RIDE_COMPLETED"
+        },
+        {
+            "bookingId": "5435354",
+            "pickupLocation": "The Hilton Hotel",
+            "dropOffLocation" : "Manchester Piccadilly",
+            "pickUpTime": "2022-09-21 16:25:09",
+            "status": "RIDE_COMPLETED"
+        },
+        {
+            "bookingId": "67867895",
+            "pickupLocation": "ibis Budget Hotel",
+            "dropOffLocation" : "Salford",
+            "pickUpTime": "2022-11-11 20:25:09",
+            "status": "REFUNDED"
+        }
+    ],
+    "data": {
+        "last30Mins": {
+            "numberOfDriverNotHere": 1,
+            "driverNotAssigned": 21,
+            "driverLate": 54,
+            "wrongPickupLocation" : 90,
+            "wrongDropOffLocation" :1894,
+            "ridesCompleted" : 17
+        },
+        "next30Mins": {
+            "numberOfDriverNotHere": 1,
+            "driverNotAssigned": 21,
+            "driverLate": 54,
+            "wrongPickupLocation" : 90,
+            "wrongDropOffLocation" :1894,
+            "ridesCompleted" : 17
+        }
+    },
+    "ridesAmendmentsData": {
+        "numberOfRefunds": 23,
+        "numberOfReallocations": 45
+    }
+}
