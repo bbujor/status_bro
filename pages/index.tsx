@@ -9,7 +9,7 @@ import { APIResponse, BookingData, BookingStatus } from '../types';
 import getStatusColor, { COLORS } from '../utils/getStatusColor';
 import showSkeleton from '../utils/showSkeleton';
 
-const getStatCard = (label: string, value: number, sstyle: unknown): ReactElement => 
+const getStatCard = (label: string, value: number, sstyle: unknown): ReactElement =>
     <section className={[styles.rideStats, sstyle].join(' ')}>
         <Text size="sm" style={{ overflow: 'hidden', whiteSpace: 'nowrap'}}>
             {label}
@@ -19,16 +19,16 @@ const getStatCard = (label: string, value: number, sstyle: unknown): ReactElemen
         </Title>
     </section>
 
-const getRows = (d: APIResponse, filterStatus: BookingStatus | undefined): ReactElement => 
+const getRows = (d: APIResponse, filterStatus: BookingStatus | undefined): ReactElement =>
     <>
-        {d.booking.map(({bookingId, pickUpTime, pickupLocation, dropOffLocation, status}: BookingData) => {
+        {d.booking.map(({bookingId, pickUpTime, pickUpLocation, dropOffLocation, status}: BookingData) => {
             if (filterStatus !== undefined && status !== filterStatus) {
                 return <></>
             }
             return (
             <tr key={bookingId}>
                 <td>{bookingId}</td>
-                <td>{pickupLocation}</td>
+                <td>{pickUpLocation}</td>
                 <td>{dropOffLocation}</td>
                 <td>
                     <Stack>
@@ -169,21 +169,11 @@ const Home: NextPage = () => {
                     <span>Last 30 mins</span>
                 </span>
                 <section className={styles.rideStatsWrapper}>
-                    {getStatCard('Driver late', !loadedData ? 0 : loadedData.data.last30Mins.driverLate, styles.alert)}
-                    {getStatCard('No driver assigned', !loadedData ? 0 : loadedData.data.last30Mins.driverNotAssigned, styles.alert)}
-                    {getStatCard('Wrong pick-up', !loadedData ? 0 : loadedData.data.last30Mins.wrongPickupLocation, styles.alert)}
-                    {getStatCard('Wrong drop-off', !loadedData ? 0 : loadedData.data.last30Mins.wrongDropOffLocation, styles.alert)}
-                    {getStatCard('Completed rides', !loadedData ? 0 : loadedData.data.last30Mins.ridesCompleted, styles.success)}
-                </section>
-                <span style={{ padding: '0 0.5em'}}>
-                    Next 30 mins
-                </span>
-                <section className={styles.rideStatsWrapper}>
-                    {getStatCard('Driver late', !loadedData ? 0 : loadedData.data.next30Mins.driverLate, styles.alert)}
-                    {getStatCard('No driver assigned', !loadedData ? 0 : loadedData.data.next30Mins.driverNotAssigned, styles.alert)}
-                    {getStatCard('Wrong pick-up', !loadedData ? 0 : loadedData.data.next30Mins.wrongPickupLocation, styles.alert)}
-                    {getStatCard('Wrong drop-off', !loadedData ? 0 : loadedData.data.next30Mins.wrongDropOffLocation, styles.alert)}
-                    {getStatCard('Completed rides', !loadedData ? 0 : loadedData.data.next30Mins.ridesCompleted, styles.success)}
+                    {getStatCard('Driver late', !loadedData ? 0 : loadedData.upcomingRides.driverLate, styles.alert)}
+                    {getStatCard('No driver assigned', !loadedData ? 0 : loadedData.upcomingRides.driverNotAssigned, styles.alert)}
+                    {getStatCard('Wrong pick-up', !loadedData ? 0 : loadedData.upcomingRides.wrongPickupLocation, styles.alert)}
+                    {getStatCard('Wrong drop-off', !loadedData ? 0 : loadedData.upcomingRides.wrongDropOffLocation, styles.alert)}
+                    {getStatCard('Completed rides', !loadedData ? 0 : loadedData.upcomingRides.ridesCompleted, styles.success)}
                 </section>
             </Stack>
         </div>
@@ -202,15 +192,15 @@ const Home: NextPage = () => {
                 <Menu.Dropdown>
                     <Menu.Label>Select statuses</Menu.Label>
                     {loadedData && (
-                        getStatusesList(loadedData.booking).map(s => 
-                            <Menu.Item key={s} onClick={handleFilterClick} data-status={s}>                                
+                        getStatusesList(loadedData.booking).map(s =>
+                            <Menu.Item key={s} onClick={handleFilterClick} data-status={s}>
                                 <Text size='xs' weight={600} data-status={s}>{s}</Text>
                             </Menu.Item>
                         )
                     )}
                 </Menu.Dropdown>
             </Menu>
-            
+
         </Group>
         <Grid p='md'>
             <Grid.Col span={12}>
@@ -226,7 +216,7 @@ const Home: NextPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {!loadedData && 
+                        {!loadedData &&
                             showSkeleton()
                         }
                         {loadedData && !loadedData.booking ? (

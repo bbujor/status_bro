@@ -11,16 +11,13 @@ export enum BookingStatus {
 
 export interface APIResponse {
     booking: BookingData[];
-    data: {
-        last30Mins: BookingStats;
-        next30Mins: BookingStats;
-    }
+    upcomingRides: BookingStats;
     ridesAmendmentsData: AmendmentStats;
 }
 
 export interface BookingData {
     bookingId: string;
-    pickupLocation: string;
+    pickUpLocation: string;
     dropOffLocation: string;
     pickUpTime: string;
     status: string;
