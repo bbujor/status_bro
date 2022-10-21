@@ -157,10 +157,10 @@ const Home: NextPage = () => {
                     <span style={{ padding: '0 0.5em'}}>
                         Total
                     </span>
-                    {getStatCard('Refunds', !loadedData ? 0 : loadedData.ridesAmendmentsData.numberOfRefunds, styles.warning)}
-                </span>
-                <span style={{ marginBottom: '1em'}}>
-                    {getStatCard('Reallocations', !loadedData ? 0 : loadedData.ridesAmendmentsData.numberOfReallocations, styles.success)}
+                    <Group style={{ gap: '4px'}}>
+                        {getStatCard('Refunds', !loadedData ? 0 : loadedData.ridesAmendmentsData.numberOfRefunds, styles.warning)}
+                        {getStatCard('Reallocations', !loadedData ? 0 : loadedData.ridesAmendmentsData.numberOfReallocations, styles.success)}
+                    </Group>
                 </span>
             </Stack>
             <span className={styles.v_divider} />
